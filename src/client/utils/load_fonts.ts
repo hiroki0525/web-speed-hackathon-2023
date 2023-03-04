@@ -25,10 +25,10 @@ const FONT_FACE_SOURCES: FontFaceSource[] = [
   },
 ];
 
-export async function loadFonts() {
-  const fontFaces = FONT_FACE_SOURCES.map(({ descripter, family, source }) => new FontFace(family, source, descripter));
-  const fonts: FontFace[] = [];
+const fontFaces = FONT_FACE_SOURCES.map(({ descripter, family, source }) => new FontFace(family, source, descripter));
+const fonts: FontFace[] = [];
 
+export async function loadFonts() {
   for (const fontFace of fontFaces) {
     const font = await fontFace.load();
     fonts.push(font);
