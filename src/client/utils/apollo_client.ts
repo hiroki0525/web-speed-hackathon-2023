@@ -1,7 +1,7 @@
 import type { HttpOptions } from '@apollo/client';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
-const syncXhr: HttpOptions['fetch'] = (uri, options) => {
+const asyncXhr: HttpOptions['fetch'] = (uri, options) => {
   return new Promise((resolve, reject) => {
     const method = options?.method;
     if (method === undefined) {
@@ -14,7 +14,7 @@ const syncXhr: HttpOptions['fetch'] = (uri, options) => {
     }
 
     const request = new XMLHttpRequest();
-    request.open(method, uri.toString(), false);
+    request.open(method, uri.toString(), true);
     request.setRequestHeader('content-type', 'application/json');
     request.onload = () => {
       if (request.status >= 200 && request.status < 300) {
@@ -29,7 +29,7 @@ const syncXhr: HttpOptions['fetch'] = (uri, options) => {
   });
 };
 
-const link = new HttpLink({ fetch: syncXhr });
+const link = new HttpLink({ fetch: asyncXhr });
 
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
