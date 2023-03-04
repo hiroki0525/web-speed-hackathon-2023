@@ -26,7 +26,7 @@ export default defineConfig(async () => {
       assetsInlineLimit: 20480,
       cssCodeSplit: false,
       cssTarget: 'chrome110',
-      minify: false,
+      minify: true,
       rollupOptions: {
         output: {
           experimentalMinChunkSize: 40960,
