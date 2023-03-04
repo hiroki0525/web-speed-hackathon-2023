@@ -1,4 +1,5 @@
-import type { FC } from 'react';
+import type {FC} from 'react';
+import { lazy } from 'react';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
@@ -7,6 +8,8 @@ import { Icon } from '../../foundation/Icon';
 import { Image } from '../../foundation/Image';
 
 import * as styles from './Header.styles';
+
+const AuthUserAnchor = lazy(() => import("./AuthUserAnchor"))
 
 export const Header: FC = () => {
   const { isAuthUser } = useAuthUser();
@@ -20,11 +23,7 @@ export const Header: FC = () => {
         </div>
       </Anchor>
       {isAuthUser ? (
-        <Anchor data-testid="navigate-order" href={'/order'}>
-          <div className={styles.orderLink}>
-            <Icon color="#222222" height={20} type="FaShoppingCart" width={20} />
-          </div>
-        </Anchor>
+        <AuthUserAnchor />
       ) : (
         <button
           className={styles.signInButton}

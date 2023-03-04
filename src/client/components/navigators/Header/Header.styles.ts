@@ -12,11 +12,6 @@ export const logo = css`
   display: flex;
 `;
 
-export const orderLink = css`
-  display: flex;
-  padding: 4px;
-`;
-
 export const signInButton = css`
   display: flex;
   padding: 4px;
