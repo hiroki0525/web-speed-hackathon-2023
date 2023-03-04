@@ -26,15 +26,9 @@ const FONT_FACE_SOURCES: FontFaceSource[] = [
 ];
 
 const fontFaces = FONT_FACE_SOURCES.map(({ descripter, family, source }) => new FontFace(family, source, descripter));
-const fonts: FontFace[] = [];
+const fontPromises = Promise.all(fontFaces.map(fontFace => fontFace.load()))
 
 export async function loadFonts() {
-  for (const fontFace of fontFaces) {
-    const font = await fontFace.load();
-    fonts.push(font);
-  }
-
-  for (const font of fontFaces) {
-    document.fonts.add(font);
-  }
+  const fonts = await fontPromises
+  fonts.forEach(font => document.fonts.add(font));
 }
