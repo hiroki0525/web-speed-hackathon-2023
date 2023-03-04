@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 
 import { Layout } from '../../components/application/Layout';
 import { ProductList } from '../../components/feature/ProductList';
-import Lazy from "../../components/libs/Lazy";
 import { ProductHeroImage } from '../../components/product/ProductHeroImage';
 import { useFeatures } from '../../hooks/useFeatures';
 import { useRecommendation } from '../../hooks/useRecommendation';
@@ -31,10 +30,10 @@ export const Top: FC = () => {
           <div className={styles.featureList}>
             {features.map((featureSection) => {
               return (
-                <Lazy key={featureSection.id} className={styles.feature}>
+                <div key={featureSection.id} className={styles.feature}>
                   <h2 className={styles.featureHeading}>{featureSection.title}</h2>
                   <ProductList featureSection={featureSection} />
-                </Lazy>
+                </div>
               );
             })}
           </div>

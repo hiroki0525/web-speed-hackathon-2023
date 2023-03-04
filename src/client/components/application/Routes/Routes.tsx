@@ -1,15 +1,14 @@
-import type { FC } from 'react';
+import type {FC} from 'react';
+import { lazy } from 'react';
 import * as Router from 'react-router-dom';
-
-import lazyWhenIdle from '../../../utils/lazyWhenIdle';
 
 import { useScrollToTop } from './hooks';
 
-const NotFound = lazyWhenIdle(() => import('../../../pages/NotFound'))
-const Order = lazyWhenIdle(() => import('../../../pages/Order'))
-const OrderComplete = lazyWhenIdle(() => import('../../../pages/OrderComplete'))
-const ProductDetail = lazyWhenIdle(() => import('../../../pages/ProductDetail'))
-const Top = lazyWhenIdle(() => import('../../../pages/Top'))
+const NotFound = lazy(() => import('../../../pages/NotFound'))
+const Order = lazy(() => import('../../../pages/Order'))
+const OrderComplete = lazy(() => import('../../../pages/OrderComplete'))
+const ProductDetail = lazy(() => import('../../../pages/ProductDetail'))
+const Top = lazy(() => import('../../../pages/Top'))
 
 
 export const Routes: FC = () => {
