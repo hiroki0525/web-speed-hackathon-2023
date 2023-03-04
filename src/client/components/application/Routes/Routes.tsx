@@ -1,13 +1,16 @@
 import type { FC } from 'react';
 import * as Router from 'react-router-dom';
 
-import { NotFound } from '../../../pages/NotFound';
-import { Order } from '../../../pages/Order';
-import { OrderComplete } from '../../../pages/OrderComplete';
-import { ProductDetail } from '../../../pages/ProductDetail';
-import { Top } from '../../../pages/Top';
+import lazyWhenIdle from '../../../utils/lazyWhenIdle';
 
 import { useScrollToTop } from './hooks';
+
+const NotFound = lazyWhenIdle(() => import('../../../pages/NotFound'))
+const Order = lazyWhenIdle(() => import('../../../pages/Order'))
+const OrderComplete = lazyWhenIdle(() => import('../../../pages/OrderComplete'))
+const ProductDetail = lazyWhenIdle(() => import('../../../pages/ProductDetail'))
+const Top = lazyWhenIdle(() => import('../../../pages/Top'))
+
 
 export const Routes: FC = () => {
   useScrollToTop();

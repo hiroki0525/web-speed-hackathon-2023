@@ -5,12 +5,14 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
-import { Fallback } from '../../../pages/Fallback';
-import { apolloClient } from '../../../utils//apollo_client';
+import { apolloClient } from '../../../utils/apollo_client';
+import lazyWhenIdle from "../../../utils/lazyWhenIdle";
 
 type Props = {
   children: ReactNode;
 };
+
+const Fallback = lazyWhenIdle(() => import('../../../pages/Fallback'))
 
 const suspenseCache = new SuspenseCache();
 
