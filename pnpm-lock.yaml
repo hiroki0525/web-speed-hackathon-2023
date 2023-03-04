@@ -44,6 +44,7 @@ specifiers:
   formik: 2.2.9
   graphql: 16.6.0
   http-graceful-shutdown: 3.1.13
+  idle-task: 4.0.0
   koa: 2.14.1
   koa-bodyparser: 4.3.0
   koa-logger: 3.2.1
@@ -62,6 +63,7 @@ specifiers:
   prettier-plugin-sort-json: 1.0.0
   react: 18.2.0
   react-dom: 18.2.0
+  react-dom-lazyload-component: 4.1.5
   react-error-boundary: 3.1.4
   react-helmet: 6.1.0
   react-icons: 4.7.1
@@ -104,6 +106,7 @@ dependencies:
   formik: 2.2.9_react@18.2.0
   graphql: 16.6.0
   http-graceful-shutdown: 3.1.13
+  idle-task: 4.0.0
   koa: 2.14.1
   koa-bodyparser: 4.3.0
   koa-logger: 3.2.1
@@ -115,6 +118,7 @@ dependencies:
   modern-css-reset: 1.4.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-dom-lazyload-component: 4.1.5_biqbaboplfbrettd7655fr4n2y
   react-error-boundary: 3.1.4_react@18.2.0
   react-helmet: 6.1.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
@@ -4011,6 +4015,10 @@ packages:
     dev: false
     optional: true
 
+  /idle-task/4.0.0:
+    resolution: {integrity: sha512-B1Hs7z9L6hwlX6QYTWxjTL9T6NejSXcRhoIp++sx4GAAXq1e5SD5GvaJo3WqwFkUNZE+yhWgFg0cUK3sbzsdSQ==}
+    dev: false
+
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
     dev: false
@@ -5396,6 +5404,16 @@ packages:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
+    dev: false
+
+  /react-dom-lazyload-component/4.1.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-/Qewb7PeZ8b5avJsEYAx0DXQtREO4o2kkx8YorwOezrZnF8kV+PU6VmuJl0sH0319YuMz0nJuHKf+BIIHK8pag==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-dom/18.2.0_react@18.2.0:
