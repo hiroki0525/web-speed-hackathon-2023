@@ -1,4 +1,4 @@
-FROM node:18.13.0-bullseye AS build
+FROM node:18.14.2-bullseye AS build
 ENV TZ Asia/Tokyo
 ENV NODE_ENV production
 
@@ -16,7 +16,7 @@ RUN pnpm build
 
 ########################################################################
 
-FROM node:18.13.0-bullseye-slim
+FROM node:18.14.2-bullseye-slim
 ENV TZ Asia/Tokyo
 ENV NODE_ENV production
 
