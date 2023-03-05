@@ -1,4 +1,4 @@
-import type {FC} from 'react';
+import type { FC } from 'react';
 import { lazy } from 'react';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
@@ -9,7 +9,7 @@ import { Image } from '../../foundation/Image';
 
 import * as styles from './Header.styles';
 
-const AuthUserAnchor = lazy(() => import("./AuthUserAnchor"))
+const AuthUserAnchor = lazy(() => import('./AuthUserAnchor'));
 
 export const Header: FC = () => {
   const { isAuthUser } = useAuthUser();
@@ -17,7 +17,7 @@ export const Header: FC = () => {
 
   return (
     <header className={styles.container}>
-      <Anchor href="/">
+      <Anchor to="/">
         <div className={styles.logo}>
           <Image src="/icons/logo.svg" />
         </div>

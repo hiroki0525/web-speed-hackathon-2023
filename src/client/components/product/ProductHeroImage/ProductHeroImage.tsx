@@ -60,7 +60,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
 
   return (
     <WidthRestriction>
-      <Anchor href={`/product/${product.id}`}>
+      <Anchor to={`/product/${product.id}`}>
         <div className={styles.container}>
           <AspectRatio ratioHeight={9} ratioWidth={16}>
             <img className={styles.image} src={imageDataUrl} />
