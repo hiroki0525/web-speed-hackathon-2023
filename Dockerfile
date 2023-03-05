@@ -1,6 +1,6 @@
 FROM node:18.14.2-bullseye AS build
 ENV TZ Asia/Tokyo
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init sqlite3
 RUN npm install -g pnpm
@@ -11,8 +11,9 @@ COPY databases/ /app/databases/
 COPY public/ /app/public/
 COPY tools/ /app/tools/
 COPY src/ /app/src/
-RUN pnpm install
-RUN pnpm build
+RUN pnpm install &&\
+    pnpm build:tsc &&\
+    pnpm build:vite:prodcution
 
 ########################################################################
 
