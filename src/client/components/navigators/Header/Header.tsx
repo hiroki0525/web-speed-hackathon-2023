@@ -5,7 +5,7 @@ import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
 import { Logo } from '../../application/Logo';
 import { Anchor } from '../../foundation/Anchor';
-import { Icon } from '../../foundation/Icon';
+import { FaUserIcon } from '../../foundation/Icons/FaUserIcon';
 
 import * as styles from './Header.styles';
 
@@ -30,7 +30,7 @@ export const Header: FC = () => {
           data-testid="navigate-signin"
           onClick={() => handleOpenModal('SIGN_IN')}
         >
-          <Icon color="#222222" height={20} type="FaUser" width={20} />
+          <FaUserIcon />
         </button>
       )}
     </header>
