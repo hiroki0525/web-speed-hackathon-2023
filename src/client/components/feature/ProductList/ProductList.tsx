@@ -1,28 +1,25 @@
 import isEqual from 'lodash/isEqual';
 import type { FC } from 'react';
-import { memo } from 'react';
+import { lazy, memo } from 'react';
 
 import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
 import useDeviceType from '../../../hooks/useDeviceType';
 import { DeviceType } from '../../application/Providers/DeviceTypeProvider';
-import { ProductGridList } from '../ProductGridList';
-import { ProductListSlider } from '../ProductListSlider';
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
 };
 
+const ProductListSlider = lazy(() => import('../ProductListSlider'));
+const ProductGridList = lazy(() => import('../ProductGridList'));
+
 export const ProductList: FC<Props> = memo(({ featureSection }) => {
   const deviceType = useDeviceType();
-
-  switch (deviceType) {
-    case DeviceType.DESKTOP: {
-      return <ProductListSlider featureSection={featureSection} />;
-    }
-    case DeviceType.MOBILE: {
-      return <ProductGridList featureSection={featureSection} />;
-    }
-  }
+  return deviceType === DeviceType.DESKTOP ? (
+    <ProductListSlider featureSection={featureSection} />
+  ) : (
+    <ProductGridList featureSection={featureSection} />
+  );
 }, isEqual);
 
 ProductList.displayName = 'ProductList';

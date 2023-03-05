@@ -1,1 +1,1 @@
-export * from './ProductListSlider';
+export { ProductListSlider as default } from './ProductListSlider';
