@@ -11,8 +11,3 @@ export const container = css`
 export const logo = css`
   display: flex;
 `;
-
-export const signInButton = css`
-  display: flex;
-  padding: 4px;
-`;
