@@ -31,7 +31,8 @@ async function init(): Promise<void> {
   app.use(session({}, app));
 
   app.use(async (ctx, next) => {
-    ctx.set('Cache-Control', 'no-store');
+    // max-age の値はよしなに
+    ctx.set('Cache-Control', 'max-age=604800');
     await next();
   });
 
