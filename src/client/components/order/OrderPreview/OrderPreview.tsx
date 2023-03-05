@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { memo } from 'react';
 
 import type { OrderFragmentResponse } from '../../../graphql/fragments';
-import { useTotalPrice } from '../../../hooks/useTotalPrice';
+import { getActiveOffer } from '../../../utils/get_active_offer';
 import { CartItem } from '../CartItem';
 
 import * as styles from './OrderPreview.styles';
@@ -16,7 +16,12 @@ type Props = {
 };
 
 export const OrderPreview: FC<Props> = memo(({ onRemoveCartItem, onUpdateCartItem, order }) => {
-  const { totalPrice } = useTotalPrice(order);
+  let totalPrice = 0;
+  for (const item of order.items) {
+    const offer = getActiveOffer(item.product.offers);
+    const price = offer?.price ?? item.product.price;
+    totalPrice += price * item.amount;
+  }
 
   return (
     <div className={styles.container}>
