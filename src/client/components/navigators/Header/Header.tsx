@@ -3,9 +3,9 @@ import { lazy } from 'react';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
+import { Logo } from '../../application/Logo';
 import { Anchor } from '../../foundation/Anchor';
 import { Icon } from '../../foundation/Icon';
-import { Image } from '../../foundation/Image';
 
 import * as styles from './Header.styles';
 
@@ -19,7 +19,7 @@ export const Header: FC = () => {
     <header className={styles.container}>
       <Anchor to="/">
         <div className={styles.logo}>
-          <Image src="/icons/logo.svg" />
+          <Logo />
         </div>
       </Anchor>
       {isAuthUser ? (
