@@ -23,7 +23,7 @@ export const ProductMediaListPreviewer: FC<Props> = ({ product }) => {
   return (
     <div className={styles.container}>
       <AspectRatio ratioHeight={9} ratioWidth={16}>
-        <MediaItemPreviewer file={product.media[activeIndex].file} />
+        <MediaItemPreviewer filename={product.media[activeIndex].file.filename} />
       </AspectRatio>
       <div className={styles.itemListWrapper}>
         <ul className={styles.itemList}>
