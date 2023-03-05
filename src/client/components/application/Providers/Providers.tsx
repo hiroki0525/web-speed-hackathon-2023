@@ -1,7 +1,8 @@
 import { ApolloProvider, SuspenseCache } from '@apollo/client';
 import type { FC, ReactNode } from 'react';
-import { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
@@ -22,9 +23,11 @@ export const Providers: FC<Props> = ({ children }) => (
     <BrowserRouter>
       <RecoilRoot>
         <ErrorBoundary fallbackRender={Fallback}>
-          <DeviceDetectProvider>
-            <Suspense fallback={null}>{children}</Suspense>
-          </DeviceDetectProvider>
+          <HelmetProvider>
+            <DeviceDetectProvider>
+              <Suspense fallback={null}>{children}</Suspense>
+            </DeviceDetectProvider>
+          </HelmetProvider>
         </ErrorBoundary>
       </RecoilRoot>
     </BrowserRouter>
