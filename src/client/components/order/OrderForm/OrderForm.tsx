@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { forceRunIdleTask, setIdleTask } from 'idle-task';
 import type { ChangeEventHandler, FC } from 'react';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
@@ -17,6 +18,8 @@ type Props = {
   onSubmit: (orderFormValue: OrderFormValue) => void;
 };
 
+const zipcodeJaImportKey = setIdleTask(() => import('zipcode-ja'));
+
 export const OrderForm: FC<Props> = ({ onSubmit }) => {
   const formik = useFormik<OrderFormValue>({
     initialValues: {
@@ -29,12 +32,10 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
   });
 
   const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
-    const zipcodeJaPromise = import('zipcode-ja');
     formik.handleChange(event);
-
     const zipCode = event.target.value;
-    const { default: zipcodeJa } = await zipcodeJaPromise;
-    const address = [...(structuredClone(zipcodeJa)[zipCode]?.address ?? [])];
+    const { default: zipcodeJa } = await forceRunIdleTask(zipcodeJaImportKey);
+    const address = zipcodeJa[zipCode]?.address ?? [];
     const prefecture = address.shift();
     const city = address.join(' ');
 

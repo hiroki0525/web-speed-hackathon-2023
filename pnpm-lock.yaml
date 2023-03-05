@@ -41,6 +41,7 @@ specifiers:
   formik: 2.2.9
   graphql: 16.6.0
   http-graceful-shutdown: 3.1.13
+  idle-task: 4.0.0
   koa: 2.14.1
   koa-bodyparser: 4.3.0
   koa-logger: 3.2.1
@@ -97,6 +98,7 @@ dependencies:
   formik: 2.2.9_react@18.2.0
   graphql: 16.6.0
   http-graceful-shutdown: 3.1.13
+  idle-task: 4.0.0
   koa: 2.14.1
   koa-bodyparser: 4.3.0
   koa-logger: 3.2.1
@@ -3981,6 +3983,10 @@ packages:
       safer-buffer: 2.1.2
     dev: false
     optional: true
+
+  /idle-task/4.0.0:
+    resolution: {integrity: sha512-B1Hs7z9L6hwlX6QYTWxjTL9T6NejSXcRhoIp++sx4GAAXq1e5SD5GvaJo3WqwFkUNZE+yhWgFg0cUK3sbzsdSQ==}
+    dev: false
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}

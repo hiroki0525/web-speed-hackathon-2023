@@ -7,9 +7,8 @@ import { Logo } from '../../application/Logo';
 import { Anchor } from '../../foundation/Anchor';
 import { FaUserIcon } from '../../foundation/Icons/FaUserIcon';
 
+import AuthUserAnchor from './AuthUserAnchor';
 import * as styles from './Header.styles';
-
-const AuthUserAnchor = lazy(() => import('./AuthUserAnchor'));
 
 export const Header: FC = () => {
   const { isAuthUser } = useAuthUser();
