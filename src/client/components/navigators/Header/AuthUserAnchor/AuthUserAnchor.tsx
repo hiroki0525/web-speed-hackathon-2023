@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 
 import { Anchor } from '../../../foundation/Anchor';
-import { Icon } from '../../../foundation/Icons';
 import { FaShoppingCartIcon } from '../../../foundation/Icons/FaShoppingCartIcon';
 
 import * as styles from './AuthUserAnchor.styles';

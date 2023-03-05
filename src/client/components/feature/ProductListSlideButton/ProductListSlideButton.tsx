@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
 
-import { Icon } from '../../foundation/Icons';
 import { FaArrowLeftIcon } from '../../foundation/Icons/FaArrowLeftIcon';
 import { FaArrowRightIcon } from '../../foundation/Icons/FaArrowRightIcon';
 

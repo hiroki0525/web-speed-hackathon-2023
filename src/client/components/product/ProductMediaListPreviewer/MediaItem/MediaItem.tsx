@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 import type { MediaFileFragmentResponse } from '../../../../graphql/fragments';
 import { getMediaType } from '../../../../utils/get_media_type';
-import { Icon } from '../../../foundation/Icons';
 import { FaPlayIcon } from '../../../foundation/Icons/FaPlayIcon';
 import { Image } from '../../../foundation/Image';
 
