@@ -40,7 +40,7 @@ export const ProductMediaListPreviewer: FC<Props> = ({ product }) => {
                     disabled={disabled}
                     onClick={() => setActiveIndex(index)}
                   >
-                    <MediaItem file={media.file} />
+                    <MediaItem filename={media.file.filename} />
                   </button>
                 </AspectRatio>
               </li>
