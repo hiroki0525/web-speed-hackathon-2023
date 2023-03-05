@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { lazy } from 'react';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
