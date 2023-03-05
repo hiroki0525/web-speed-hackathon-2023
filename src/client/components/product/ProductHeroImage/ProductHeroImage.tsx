@@ -1,17 +1,15 @@
 import CanvasKitInit from 'canvaskit-wasm';
 import CanvasKitWasmUrl from 'canvaskit-wasm/bin/canvaskit.wasm?url';
-import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
-import useDeviceType from '../../../hooks/useDeviceType';
-import { DeviceType } from '../../application/Providers/DeviceTypeProvider';
 import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { WidthRestriction } from '../../foundation/WidthRestriction';
 
+import { Overlay } from './Overlay';
 import * as styles from './ProductHeroImage.styles';
 
 async function loadImageAsDataURL(url: string): Promise<string> {
@@ -45,7 +43,6 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
   const [imageDataUrl, setImageDataUrl] = useState<string>();
-  const deviceType = useDeviceType();
 
   useEffect(() => {
     if (thumbnailFile == null) {
@@ -65,25 +62,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
           <AspectRatio ratioHeight={9} ratioWidth={16}>
             <img className={styles.image} src={imageDataUrl} />
           </AspectRatio>
-
-          <div className={styles.overlay}>
-            <p
-              className={classNames(styles.title, {
-                [styles.title__desktop]: deviceType === DeviceType.DESKTOP,
-                [styles.title__mobile]: deviceType === DeviceType.MOBILE,
-              })}
-            >
-              {title}
-            </p>
-            <p
-              className={classNames(styles.description, {
-                [styles.description__desktop]: deviceType === DeviceType.DESKTOP,
-                [styles.description__mobile]: deviceType === DeviceType.MOBILE,
-              })}
-            >
-              {product.name}
-            </p>
-          </div>
+          <Overlay title={title}>{product.name}</Overlay>
         </div>
       </Anchor>
     </WidthRestriction>
