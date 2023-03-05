@@ -1,6 +1,5 @@
 import CanvasKitInit from 'canvaskit-wasm';
 import CanvasKitWasmUrl from 'canvaskit-wasm/bin/canvaskit.wasm?url';
-import isEqual from 'lodash/isEqual';
 import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
 
@@ -12,14 +11,14 @@ import { WidthRestriction } from '../../foundation/WidthRestriction';
 import { Overlay } from './Overlay';
 import * as styles from './ProductHeroImage.styles';
 
-async function loadImageAsDataURL(url: string): Promise<string> {
-  const CanvasKit = await CanvasKitInit({
-    // WASM ファイルの URL を渡す
-    locateFile: () => CanvasKitWasmUrl,
-  });
+const CanvasKitPromise = CanvasKitInit({
+  // WASM ファイルの URL を渡す
+  locateFile: () => CanvasKitWasmUrl,
+});
 
+async function loadImageAsDataURL(url: string): Promise<string> {
   // 画像を読み込む
-  const data = await fetch(url).then((res) => res.arrayBuffer());
+  const [CanvasKit, data] = await Promise.all([CanvasKitPromise, fetch(url).then((res) => res.arrayBuffer())]);
   const image = CanvasKit.MakeImageFromEncoded(data);
   if (image == null) {
     // 読み込みに失敗したとき、透明な 1x1 GIF の Data URL を返却する
@@ -67,6 +66,6 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
       </Anchor>
     </WidthRestriction>
   );
-}, isEqual);
+});
 
 ProductHeroImage.displayName = 'ProductHeroImage';
