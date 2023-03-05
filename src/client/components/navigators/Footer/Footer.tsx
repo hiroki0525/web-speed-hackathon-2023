@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 import useDeviceType from '../../../hooks/useDeviceType';
 import { Logo } from '../../application/Logo';
 import { DeviceType } from '../../application/Providers/DeviceTypeProvider';
-import { Image } from '../../foundation/Image';
 
 import * as styles from './Footer.styles';
 
